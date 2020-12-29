@@ -1,0 +1,60 @@
+#include <iostream>
+#include <stdlib.h> // for srand, rand
+using namespace std;
+string random_shuffle(string arr[], int size){
+int n = rand() % size; // genereating random number from 0 to size passed
+return arr[n];
+}
+int main() {
+string face_values[] = {"2","3","4","5","6","7","8","9","10","J","Q","K","A"}; // defining arrays of string
+string suit_values[] = {"Hearts" , "Spades", "Clubs", "Diamonds"};
+int ch;
+string guessface, guesssuit, face, suit;
+cout << "1. Guess only the face value of the card." << endl; //menu of game
+cout << "2. Guess only the suit of the card." << endl;
+cout << "3. Guess both the face value and suit of the card.\n" << endl;
+cout << "Choose one option: ";
+cin >> ch;
+switch (ch){
+case 1:
+cout << "Guess the face value of the card: ";
+cin >> guessface;
+face = random_shuffle(face_values,13);
+if(guessface == face)
+cout << "Right guess.\n";
+else
+cout << "Wrong guess.\n";
+cout << "Face value is " << face << endl;
+break;
+case 2:
+cout << "Guess the suit value of the card: ";
+cin >> guesssuit;
+suit = random_shuffle(suit_values,4); // calling function random_shuffle
+if(guesssuit == suit)
+cout << "Right guess.\n";
+else
+cout << "Wrong guess.\n";
+cout << "Suit value is " << suit << endl;
+break;
+case 3:
+cout << "Guess the face value of the card: ";
+cin >> guessface;
+face = random_shuffle(face_values,13);
+cout << "Guess the suit value of the card: ";
+cin >> guesssuit;
+suit = random_shuffle(suit_values,4);
+if(guessface == face)
+cout << "Right face guess.\n"; // checking random card generated with user input
+else
+cout << "Wrong face guessed.\n";
+cout << "Face value is " << face << endl;
+if(guesssuit == suit)
+cout << "Right suit guess.\n"; // checking random card generated with user input
+else
+cout << "Wrong suit guessed.\n";
+cout << "Suit value is " << suit << endl;
+break;
+default:
+cout << "Invalid input.\n";
+}
+}
